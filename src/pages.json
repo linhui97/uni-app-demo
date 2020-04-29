@@ -1,15 +1,35 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			}
+		},{
+			"path": "pages/horizontal/index",
+			"style": {
+				"navigationBarTitleText": "横屏"
+			}
+		},{
+			"path": "pages/video/index",
+			"style": {
+				"navigationBarTitleText": "视频"
+			}
+		},{
+			"path": "pages/search/index",
+			"style": {
+				"navigationBarTitleText": "搜索"
+			}
+		},{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "微信小程序项目",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}
