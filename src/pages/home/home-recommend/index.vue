@@ -77,8 +77,15 @@
         },
         mounted() {
             this.getData();
+            this.showTitle();
         },
         methods: {
+            //修改页面标题
+            showTitle(){
+                uni.setNavigationBarTitle({
+                    title: "推荐"
+                })
+            },
             // 获取数据
             getData(){
                 this.request({
@@ -205,7 +212,7 @@
             .hots_item {
                 width: 33.33%;
                 border: 5rpx solid #fff;
-                img {
+                image {
 
                 }
             }
