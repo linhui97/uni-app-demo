@@ -24,8 +24,10 @@
 
         <!-- 图片列表 -->
         <view class="album_list">
-            <view class="album_item" v-for="item in wallpaper" :key="item.id">
-                <image mode="widthFix" :src="item.thumb+item.rule.replace('$<Height>', 360)"></image>
+            <view class="album_item" v-for="(item, index) in wallpaper" :key="item.id">
+                <go-detail :list="wallpaper" :index="index">
+                    <image mode="widthFix" :src="item.thumb+item.rule.replace('$<Height>', 360)"></image>
+                </go-detail>
             </view>
         </view>
 
@@ -33,6 +35,8 @@
 </template>
 
 <script>
+    import goDetail from '@/components/goDetail'
+
     export default {
         name: "index",
         data() {
@@ -49,10 +53,13 @@
                 hasMore: true
             }
         },
+        components: {
+            goDetail
+        },
         onLoad(options) {
             console.log(options);
-            this.id = options.id;
-            // this.id = "5eaabf0be7bce73965514570";
+            // this.id = options.id;
+            this.id = "5d5f8e45e7bce75ae7fb8278";
             this.getData();
         },
         // 页面触底 上拉加载下一页事件

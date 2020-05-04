@@ -32,9 +32,11 @@
             <view class="months_content">
                 <view
                     class="months_item"
-                    v-for="item in months.items"
+                    v-for="(item, index) in months.items"
                     :key="item.id">
-                    <image mode="aspectFill" :src="item.thumb+item.rule.replace('$<Height>', 360)"></image>
+                    <go-detail :list="months.items" :index="index">
+                        <image mode="aspectFill" :src="item.thumb+item.rule.replace('$<Height>', 360)"></image>
+                    </go-detail>
                 </view>
             </view>
         </view>
@@ -47,9 +49,11 @@
             <view class="hots_content">
                 <view
                     class="hots_item"
-                    v-for="item in hots"
+                    v-for="(item, index) in hots"
                     :key="item.id">
-                    <image mode="widthFix" :src="item.thumb"/>
+                    <go-detail :list="hots" :index="index">
+                        <image mode="widthFix" :src="item.thumb"/>
+                    </go-detail>
                 </view>
             </view>
         </view>
@@ -58,6 +62,8 @@
 
 <script>
     import moment from 'moment'
+    import goDetail from '@/components/goDetail'
+
     export default {
         name: "index",
         data(){
@@ -73,8 +79,8 @@
                 hasMore: true,  //是否还有下一页
             }
         },
-        computed: {
-
+        components: {
+            goDetail
         },
         mounted() {
             this.getData();
