@@ -24,7 +24,11 @@
 
         <!--列表-->
         <view class="album_list">
-            <view class="album_item" v-for="item in album" :key="item.id">
+            <navigator
+                class="album_item"
+                v-for="item in album"
+                :key="item.id"
+                :url='`/pages/album/index?id=${item.id}`'>
                 <view class="album_img">
                     <image mode='aspectFill' :src="item.cover"></image>
                 </view>
@@ -35,7 +39,7 @@
                         <view class="album_attention">关注 +</view>
                     </view>
                 </view>
-            </view>
+            </navigator>
         </view>
 
     </scroll-view>
@@ -82,7 +86,11 @@
                     // 判断还有没有下一页数据
                     if(result.res.album.length === 0){
                         this.hasMore = false;
-                        return
+                        uni.showToast({
+                            title: "没有数据了(╯︵╰)",
+                            icon: "none"
+                        });
+                        return;
                     }
                     // 列表
                     this.album = [...this.album, ...result.res.album];

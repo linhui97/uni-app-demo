@@ -103,6 +103,10 @@
                     // 判断还有没有下一页数据
                     if(result.res.vertical.length === 0){
                         this.hasMore = false;
+                        uni.showToast({
+                            title: "没有数据了(╯︵╰)",
+                            icon: "none"
+                        });
                         return
                     }
 
@@ -130,7 +134,7 @@
                     uni.showToast({
                         title: "没有数据了(╯︵╰)",
                         icon: "none"
-                    })
+                    });
                 }
             }
         }

@@ -6,6 +6,11 @@
 				"navigationBarTitleText": "首页"
 			}
 		},{
+			"path": "pages/album/index",
+			"style": {
+				"navigationBarTitleText": "专辑详情"
+			}
+		},{
 			"path": "pages/horizontal/index",
 			"style": {
 				"navigationBarTitleText": "横屏"
