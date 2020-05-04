@@ -6,12 +6,13 @@
         v-if="recommends.length>0">
         <!--推荐-->
         <view class="recommend_wrap">
-            <view
+            <navigator
                 class="recommend_item"
                 v-for="item in recommends"
-                :key="item.id">
+                :key="item.id"
+                :url='`/pages/album/index?id=${item.target}`'>
                 <image mode="widthFix" :src="item.thumb"/>
-            </view>
+            </navigator>
         </view>
 
         <!--月份-->

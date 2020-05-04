@@ -1,5 +1,5 @@
 <template>
-    <view>
+    <view v-if="wallpaper.length>0">
         <!-- 专辑图片 -->
         <view class="album_bg">
             <image mode="widthFix" :src="album.cover"></image>
