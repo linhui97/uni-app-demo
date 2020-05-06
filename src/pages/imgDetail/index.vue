@@ -121,6 +121,11 @@
             </view>
         </view>
 
+        <!--下载按钮-->
+        <view class="download">
+            <view class="download_btn" @click="handleDownload">下载图片</view>
+        </view>
+
     </view>
 </template>
 
@@ -180,7 +185,7 @@
                     this.hot = result.res.hot;
                 })
             },
-            //滑动事件
+            //图片切换滑动事件
             handleSwiperAction(e){
                 // console.log(e);
                 /*
@@ -204,8 +209,30 @@
                     });
                     return;
                 }
-            }
+            },
+            //点击下载图片
+            async handleDownload(){
+                // uni.downloadFile()
+                // uni.saveImageToPhotosAlbum()
 
+                await uni.showLoading({
+                    title: '图片下载中...'
+                });
+
+                //1.将远程文件下载到小程序的内存中 tempFilePath
+                const result1 = await uni.downloadFile({ url: this.imgDetail.img });
+                const { tempFilePath } = result1[1];
+                // 2.将小程序内存中临时文件下载到本地上
+                const result2 = await uni.saveImageToPhotosAlbum({ filePath: tempFilePath });
+                //3.提示用户下载成功
+                // console.log("下载衣服");
+                // console.log(result2)
+                uni.hideLoading();
+                await uni.showToast({
+                    title: '下载成功'
+                    // icon
+                })
+            }
         }
     }
 </script>
@@ -406,6 +433,25 @@
     .new{
         .iconpinglun{
             color: aqua !important;
+        }
+    }
+
+    /*下载图片*/
+    .download{
+        height: 120rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .download_btn{
+            width: 90%;
+            height: 80%;
+            background-color: $color;
+            color: #ffffff;
+            font-size: 36rpx;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 
