@@ -13,7 +13,9 @@
 
         <!--高清大图-->
         <view class="height_img">
-            <image :src="imgDetail.thumb" mode="widthFix"></image>
+            <swiper-action @swiperAction="handleSwiperAction">
+                <image :src="imgDetail.thumb" mode="widthFix"></image>
+            </swiper-action>
         </view>
 
         <!--点赞/收藏-->
@@ -124,6 +126,7 @@
 
 <script>
     import moment from 'moment'
+    import swiperAction from '@/components/swiperAction'
     //设置语言为中文
     moment.locale("zh-cn");
 
@@ -135,21 +138,33 @@
                 album: [],  //专辑数据
                 comment: [],  //最新评论
                 hot: [],  //最热评论
+                imgIndex: 0,  //当前图片索引
+                imgList: [],  //图片列表
             }
         },
+        components: {
+            swiperAction
+        },
         onLoad(){
-            console.log(getApp().globalData);
+            // console.log(getApp().globalData);
             const {imgList, imgIndex} = getApp().globalData;
-            this.imgDetail = imgList[imgIndex];
-            this.imgDetail.newThumb = this.imgDetail.thumb + this.imgDetail.rule.replace('$<Height>', 360);
+            this.imgIndex = imgIndex;
+            this.imgList = imgList;
 
-            // 将时间转换成 "XXX年"
-            this.imgDetail.cnTime = moment(this.imgDetail.atime*1000).fromNow();
-
-            //获取图片评论
-            this.getComments(this.imgDetail.id);
+            this.setData();
         },
         methods: {
+            // 给当前页面赋值
+            setData(){
+                this.imgDetail = this.imgList[this.imgIndex];
+                // this.imgDetail.newThumb = this.imgDetail.thumb + this.imgDetail.rule.replace('$<Height>', 360);
+
+                // 将时间转换成 "XXX年"
+                this.imgDetail.cnTime = moment(this.imgDetail.atime*1000).fromNow();
+
+                //获取图片评论
+                this.getComments(this.imgDetail.id);
+            },
             // 获取评论数据
             getComments(id) {
                 this.request({
@@ -165,6 +180,32 @@
                     this.hot = result.res.hot;
                 })
             },
+            //滑动事件
+            handleSwiperAction(e){
+                // console.log(e);
+                /*
+                    1.用户 左滑 imgIndex++
+                    2.用户 右滑 imgIndex++
+                    3.判断 数组是否有越界问题
+                    4.左滑 e.direction === "left" && this.imgIndex < this.imgList.length
+                    5.右滑 e.direction === "right" && this.imgIndex >= 0
+                */
+                if(e.direction === "left" && this.imgIndex < this.imgList.length -1){
+                    //左滑
+                    ++this.imgIndex;
+                    this.setData();
+                }else if(e.direction === "right" && this.imgIndex > 0){
+                    --this.imgIndex;
+                    this.setData();
+                }else {
+                    uni.showToast({
+                        title: "没有数据了(╯︵╰)",
+                        icon: "none"
+                    });
+                    return;
+                }
+            }
+
         }
     }
 </script>
@@ -311,7 +352,8 @@
                         justify-content: center;
                         align-items: center;
                         image {
-                            width: 80%;
+                            width: 88rpx;
+                            border-radius: 50%;
                         }
                     }
 
