@@ -1,4 +1,5 @@
 <template>
+    <!-- 推荐页面 -->
     <scroll-view
         scroll-y
         @scrolltolower="handleToLower"

@@ -1,5 +1,6 @@
 <template>
     <!--
+        图片详情高清大图组件
         1.slot
         2.对外提供数据 滑动的方向
     -->
@@ -46,7 +47,7 @@
                 // 滑动的方向
                 let direction = "";
                 //先判断用户滑动的距离 是否合法；合法：判断滑动的方向； 注意：距离要加上绝对值
-                if(Math.abs(this.endX - this.startX) > 10){
+                if(Math.abs(this.endX - this.startX) > 10 && Math.abs(this.endY - this.startY) < 10){
                     direction = this.endX - this.startX>0 ? "right" : "left";
                 }else {
                     return;

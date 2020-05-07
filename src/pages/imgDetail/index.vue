@@ -1,4 +1,5 @@
 <template>
+    <!-- 图片详情页面 -->
     <view>
         <!--用户信息-->
         <view class="user_info">

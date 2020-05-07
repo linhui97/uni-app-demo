@@ -1,4 +1,5 @@
 <template>
+    <!-- 专辑详情页面 -->
     <view v-if="wallpaper.length>0">
         <!-- 专辑图片 -->
         <view class="album_bg">
@@ -58,8 +59,8 @@
         },
         onLoad(options) {
             console.log(options);
-            // this.id = options.id;
-            this.id = "5d5f8e45e7bce75ae7fb8278";
+            this.id = options.id;
+            // this.id = "5d5f8e45e7bce75ae7fb8278";
             this.getData();
         },
         // 页面触底 上拉加载下一页事件

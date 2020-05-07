@@ -1,4 +1,5 @@
 <template>
+    <!--专辑列表页面 -->
     <scroll-view
             scroll-y
             @scrolltolower="handleToLower"

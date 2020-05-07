@@ -1,4 +1,9 @@
 <template>
+    <!--
+        图片组件
+        1.用于获取当前图片索引和图片列表
+        2.点击图片后将当前图片索引和图片列表数据共享到全局中
+    -->
     <view @click="handleClick">
         <slot></slot>
     </view>

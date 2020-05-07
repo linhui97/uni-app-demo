@@ -1,4 +1,5 @@
 <template>
+    <!-- 首页 -->
     <view class="home_tab">
         <!--分段器-->
         <view class="home_tab_title">
@@ -51,7 +52,7 @@
                     {title: "最新"},
                     {title: "专辑"},
                 ],
-                current: 0
+                current: 1
             }
         },
         components: {
@@ -74,13 +75,6 @@
                 if (this.current !== e.currentIndex) {
                     this.current = e.currentIndex;
                 }
-            },
-            getData(){
-                this.request({
-                    url: "http://157.122.54.189:9088/image/v3/homepage/vertical"
-                }).then( res => {
-                    console.log(res);
-                })
             }
         }
     }
