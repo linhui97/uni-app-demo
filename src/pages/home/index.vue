@@ -18,16 +18,16 @@
         <!--标签页内容-->
         <view class="home_tab_content">
             <view v-if="current === 0">
-                <homeRecommend></homeRecommend>
+                <home-recommend></home-recommend>
             </view>
             <view v-if="current === 1">
-                <homeCategory></homeCategory>
+                <home-category></home-category>
             </view>
             <view v-if="current === 2">
-                <homeNew></homeNew>
+                <home-new></home-new>
             </view>
             <view v-if="current === 3">
-                <homeAlbum></homeAlbum>
+                <home-album></home-album>
             </view>
         </view>
 

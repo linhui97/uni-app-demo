@@ -1,4 +1,5 @@
 <template>
+    <!--分类详情页-->
     <view class="category_tab">
         <!--分段器-->
         <view class="category_tab_title">
