@@ -32,6 +32,11 @@
 				"navigationBarTitleText": "视频播放"
 			}
 		},{
+			"path": "pages/videoCategory/index",
+			"style": {
+				"navigationBarTitleText": "视频分类详情"
+			}
+		},{
 			"path": "pages/search/index",
 			"style": {
 				"navigationBarTitleText": "搜索"

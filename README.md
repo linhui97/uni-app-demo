@@ -1,19 +1,19 @@
-# uni_app_demo
+# uni_app_demo 用uni-app编写微信小程序案例
 
-## Project setup
+## 安装项目依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动项目
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run dev:mp-weixin
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 构建微信小程序
+```
+npm run build:mp-weixin
+```
+
+### 预览项目
+用微信开发者工具导入：dist\dev\mp-weixin 可查看项目展示效果
