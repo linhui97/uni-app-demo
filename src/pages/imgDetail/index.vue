@@ -2,7 +2,7 @@
     <!-- 图片详情页面 -->
     <view>
         <!--用户信息-->
-        <view class="user_info">
+        <view class="user_info" v-if="imgDetail.user">
             <view class="user_icon">
                 <image :src="imgDetail.user.avatar" mode="widthFix"></image>
             </view>
